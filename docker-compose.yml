@@ -1,0 +1,13 @@
+version: '3.4'
+services:
+  mongo-container:
+    network_mode: host
+    image: mongo:4.2
+    environment:
+        - MONGO_INITDB_ROOT_USERNAME=admin
+        - MONGO_INITDB_ROOT_PASSWORD=pass
+    ports:
+      - "27017:27017"
+    volumes:
+      - "$PWD/mongo-entrypoint/:/docker-entrypoint-initdb.d/"
+    command: mongod
